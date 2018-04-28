@@ -16,7 +16,7 @@ labels = {}
 
 # Open the model to be read if it exists
 try:
-    open("model2.json", "r")
+    open("model.json", "r")
 
 # Create it if it doesn't exists
 except IOError:
@@ -124,13 +124,13 @@ except IOError:
 
     # Part 2.5 - saving the model to disk
     model = classifier.to_json()
-    with open("model2.json", "w") as model_json_file:
+    with open("model.json", "w") as model_json_file:
         model_json_file.write(model)
-    classifier.save_weights("model2.h5")
+    classifier.save_weights("model.h5")
     print("Saved model to disk")
 
 # Part 3 - Loading model from disk
-model_json_file = open("model2.json", "r")
+model_json_file = open("model.json", "r")
 
 # Read model
 loaded_model_json = model_json_file.read()
@@ -142,7 +142,7 @@ model_json_file.close()
 loaded_model = model_from_json(loaded_model_json)
 
 # Load weights
-loaded_model.load_weights("model2.h5")
+loaded_model.load_weights("model.h5")
 print("Loaded model from disk")
 
 # Part 3.5 - Making new predictions
